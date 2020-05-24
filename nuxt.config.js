@@ -1,6 +1,13 @@
 const colors = require('vuetify/es5/util/colors').default
 
+const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
+  router: {
+    base: '/requirements/'
+  }
+} : {};
+
 module.exports = {
+  ...routerBase,
   mode: 'universal',
   /*
   ** Headers of the page
@@ -16,9 +23,6 @@ module.exports = {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
-  },
-  router: {
-    base: '/'
   },
   /*
   ** Customize the progress-bar color
