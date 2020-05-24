@@ -276,6 +276,7 @@ export default {
       networkAndProtocolsList: [
         'tcp/ip',
         'http(s)',
+        'http/2',
         'ws(s)',
         'smtp',
         'WebRTC',
