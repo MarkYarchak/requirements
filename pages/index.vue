@@ -2,229 +2,50 @@
   <v-layout
     justify-center
     wrap
+    class="grid-width-block"
   >
-    <div class="pa-3 full-width-block card-center-height">
-      <v-card
-        max-width="400"
-        width="100%"
-      >
-        <v-card-title class="headline">
-          WEB development
-        </v-card-title>
-        <v-card-text>
-          <v-list dense>
-            <v-list-item
-              v-for="(req, reqI) in webRequirementsList"
-              :key="reqI"
-              dense
-            >
-              {{ req }}
-            </v-list-item>
-          </v-list>
-        </v-card-text>
-        <hr class="mb-2">
-        <v-card-actions>
-          <v-spacer />
-          <v-btn
-            color="primary"
-            nuxt
-            @click="agreeWithRequirementsDialog = true"
-          >
-            Agree
-          </v-btn>
-          <v-spacer />
-        </v-card-actions>
-      </v-card>
-    </div>
-
-    <div class="pa-3 full-width-block card-center-height">
-      <v-card
-        max-width="400"
-        width="100%"
-      >
-        <v-card-title class="headline">
-          Browser and dev-tools
-        </v-card-title>
-        <v-card-text>
-          <v-list dense>
-            <v-list-item
-              v-for="(req, reqI) in browserRequirements"
-              :key="reqI"
-              dense
-            >
-              {{ req }}
-            </v-list-item>
-          </v-list>
-        </v-card-text>
-        <hr class="mb-2">
-        <v-card-actions>
-          <v-spacer />
-          <v-btn
-            color="primary"
-            nuxt
-            @click="agreeWithRequirementsDialog = true"
-          >
-            Agree
-          </v-btn>
-          <v-spacer />
-        </v-card-actions>
-      </v-card>
-    </div>
-
-    <div class="pa-3 full-width-block card-center-height">
-      <v-card
-        max-width="400"
-        width="100%"
-      >
-        <v-card-title class="headline">
-          Technologies and databases
-        </v-card-title>
-        <v-card-text>
-          <v-list dense>
-            <v-list-item
-              v-for="(req, reqI) in technologiesRequirementsList"
-              :key="reqI"
-              dense
-            >
-              {{ req }}
-            </v-list-item>
-          </v-list>
-        </v-card-text>
-        <hr class="mb-2">
-        <v-card-actions>
-          <v-spacer />
-          <v-btn
-            color="primary"
-            nuxt
-            @click="agreeWithRequirementsDialog = true"
-          >
-            Agree
-          </v-btn>
-          <v-spacer />
-        </v-card-actions>
-      </v-card>
-    </div>
-
-    <div class="pa-3 full-width-block card-center-height">
-      <v-card
-        max-width="400"
-        width="100%"
-      >
-        <v-card-title class="headline">
-          Protocols requirements
-        </v-card-title>
-        <v-card-text>
-          <v-list dense>
-            <v-list-item
-              v-for="(req, reqI) in networkAndProtocolsList"
-              :key="reqI"
-              dense
-            >
-              {{ req }}
-            </v-list-item>
-          </v-list>
-        </v-card-text>
-        <hr class="mb-2">
-        <v-card-actions>
-          <v-spacer />
-          <v-btn
-            color="primary"
-            nuxt
-            @click="agreeWithRequirementsDialog = true"
-          >
-            Agree
-          </v-btn>
-          <v-spacer />
-        </v-card-actions>
-      </v-card>
-    </div>
-
-    <div class="pa-3 full-width-block card-center-height">
-      <v-card
-        max-width="400"
-        width="100%"
-      >
-        <v-card-title class="headline">
-          Mobile development
-        </v-card-title>
-        <v-card-text>
-          <v-list dense>
-            <v-list-item
-              v-for="(req, reqI) in mobileRequirementsList"
-              :key="reqI"
-              dense
-            >
-              {{ req }}
-            </v-list-item>
-          </v-list>
-        </v-card-text>
-        <hr class="mb-2">
-        <v-card-actions>
-          <v-spacer />
-          <v-btn
-            color="primary"
-            nuxt
-            @click="agreeWithRequirementsDialog = true"
-          >
-            Agree
-          </v-btn>
-          <v-spacer />
-        </v-card-actions>
-      </v-card>
-    </div>
-
-    <div class="pa-3 full-width-block card-center-height">
-      <v-card
-        max-width="400"
-        width="100%"
-      >
-        <v-card-title class="headline">
-          Desktop and plugins
-        </v-card-title>
-        <v-card-text>
-          <v-list dense>
-            <v-list-item
-              v-for="(req, reqI) in desktopRequirementsList"
-              :key="reqI"
-              dense
-            >
-              {{ req }}
-            </v-list-item>
-          </v-list>
-        </v-card-text>
-        <hr class="mb-2">
-        <v-card-actions>
-          <v-spacer />
-          <v-btn
-            color="primary"
-            nuxt
-            @click="agreeWithRequirementsDialog = true"
-          >
-            Agree
-          </v-btn>
-          <v-spacer />
-        </v-card-actions>
-      </v-card>
-    </div>
-
-    <v-dialog
-      v-model="agreeWithRequirementsDialog"
-      width="300"
+    <div
+      v-for="(requirementsBlock, reqIndex) in requirementsList"
+      :key="reqIndex"
+      class="pa-3 card-center-height"
     >
-      <v-card>
-        <v-card-title>Thanks</v-card-title>
-        <v-card-text>Thank you for requirements agreement</v-card-text>
+      <v-card
+        max-width="400"
+        width="100%"
+      >
+        <v-card-title class="headline">
+          {{ requirementsBlock.title }}
+        </v-card-title>
+        <div style="padding: 0 16px">
+          <v-list dense>
+            <ul>
+              <li
+                v-for="(req, reqI) in requirementsBlock.list"
+                :key="reqI"
+                style="min-height: 36px"
+              >
+                {{ req }}
+              </li>
+            </ul>
+          </v-list>
+        </div>
+        <v-divider />
         <v-card-actions>
+          <div style="flex-grow: 1;"></div>
           <v-btn
+            color="blue"
+            nuxt
             text
             block
-            @click="agreeWithRequirementsDialog = false"
+            @click="agreeWithRequirementsDialog = true"
           >
-            Close
+            <v-icon left>mdi-open-in-new</v-icon>
+            Learn more
           </v-btn>
+          <div style="flex-grow: 1;"></div>
         </v-card-actions>
       </v-card>
-    </v-dialog>
+    </div>
   </v-layout>
 </template>
 
@@ -233,66 +54,96 @@ export default {
   data() {
     return {
       agreeWithRequirementsDialog: false,
-      webRequirementsList: [
-        'NodeJS',
-        'TypeScript',
-        'Express',
-        'Passport',
-        'Vue',
-        'Angular',
-        'NuxtJS',
-        'SocketIO',
-        'NestJS',
-        'Apollo',
-        'RxJS',
-        'Mongoose',
-        'Lodash',
-        'CSS preprocessors'
-      ],
-      mobileRequirementsList: [
-        'Kotlin',
-        'NativeScript',
-        'Dart',
-        'Flutter',
-      ],
-      desktopRequirementsList: [
-        'Electron',
-        'C# .NET',
-        'Python',
-        'C++',
-      ],
-      technologiesRequirementsList: [
-        'MongoDB',
-        'MySQL',
-        'GraphQL',
-        'SOLID',
-        'Material Design',
-        'Asynchronous programming',
-        'Object-oriented programming',
-        'Functional programming',
-        'Lint',
-        'Git',
-      ],
-      networkAndProtocolsList: [
-        'tcp/ip',
-        'http(s)',
-        'http/2',
-        'ws(s)',
-        'smtp',
-        'WebRTC',
-        'hls',
-        'ftp',
-      ],
-      browserRequirements: [
-        'Network',
-        'Console',
-        'Inspector (and debugger)',
-        'Service Workers',
-        'Local storage',
-        'Session storage',
-        'Cookies',
-        'IndexedDB',
-        'Load page performance (process)'
+      requirementsList: [
+        {
+          title: 'WEB development',
+          list: [
+            'NodeJS',
+            'TypeScript',
+            'Express',
+            'Passport',
+            'Vue',
+            'Angular',
+            'NuxtJS',
+            'SocketIO',
+            'NestJS',
+            'Apollo',
+            'RxJS',
+            'Mongoose',
+            'Lodash',
+            'React',
+            'CSS preprocessors'
+          ],
+        },
+        {
+          title: 'Browser and dev-tools',
+          list: [
+            'Network',
+            'Console',
+            'Inspector (and debugger)',
+            'Service Workers',
+            'Local storage',
+            'Session storage',
+            'Cookies',
+            'IndexedDB',
+            'Load page performance (process)'
+          ],
+        },
+        {
+          title: 'Technologies and databases',
+          list: [
+            'MongoDB',
+            'MySQL',
+            'GraphQL',
+            'Shell/bash',
+            'File systems',
+            'Git',
+            'Docker',
+            'Unit/e2e testing'
+          ],
+        },
+        {
+          title: 'Protocols requirements',
+          list: [
+            'tcp/ip',
+            'http(s)',
+            'http/2',
+            'ws(s)',
+            'smtp',
+            'WebRTC',
+            'hls',
+            'ftp',
+          ],
+        },
+        {
+          title: 'Principles and rules',
+          list: [
+            'SOLID',
+            'Material Design',
+            'Asynchronous programming',
+            'Object-oriented programming',
+            'Functional programming',
+            'Lint',
+          ],
+        },
+        {
+          title: 'Mobile development',
+          list: [
+            'Kotlin',
+            'NativeScript',
+            'Dart',
+            'Flutter',
+          ],
+        },
+        {
+          title: 'Desktop and plugins',
+          list: [
+            'Electron',
+            'C# .NET',
+            'Python',
+            'C/C++',
+          ],
+        },
       ],
     };
   },
@@ -307,5 +158,13 @@ export default {
     display: flex;
     width: 100%;
     max-width: 440px;
+  }
+
+  .grid-width-block {
+    display: grid;
+    max-width: 100%;
+    width: 100%;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 440px));
+    grid-template-rows: repeat(auto-fill, minmax(min-content, min-content));
   }
 </style>
