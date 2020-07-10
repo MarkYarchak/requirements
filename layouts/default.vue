@@ -13,7 +13,7 @@
         :large="$vuetify.breakpoint.smAndUp"
         class="mr-5-sm"
         target="_blank"
-        href="https://github.com/MarkYarchak"
+        href="https://github.com/MarkYarchak/requirements"
       >
         <v-icon>mdi-github</v-icon>
       </v-btn>

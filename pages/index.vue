@@ -72,7 +72,7 @@ export default {
             'Mongoose',
             'Lodash',
             'React',
-            'CSS preprocessors'
+            'CSS preprocessors',
           ],
         },
         {
@@ -86,7 +86,33 @@ export default {
             'Session storage',
             'Cookies',
             'IndexedDB',
-            'Load page performance (process)'
+            'Load page performance (process)',
+          ],
+        },
+        {
+          title: 'Auth',
+          list: [
+            'Authorization / Authentication',
+            'Validation',
+            'Token',
+            'OAuth2',
+            'Authorization header',
+            'JsonWebToken',
+            'Access and refresh tokens',
+            'Passport (JS etc.)',
+            'Bcrypt',
+          ],
+        },
+        {
+          title: 'Server security',
+          list: [
+            'Production mode (no dev configurations)',
+            'TLS',
+            'Cors',
+            'Helmet + Disabled X-Powered-By header',
+            'CSRF',
+            'Rate limit',
+            'Virtual isolated environments / Containers',
           ],
         },
         {
@@ -99,7 +125,8 @@ export default {
             'File systems',
             'Git',
             'Docker',
-            'Unit/e2e testing'
+            'Kubernetes',
+            'Unit/e2e testing',
           ],
         },
         {
