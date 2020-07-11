@@ -23,6 +23,7 @@
           <v-expansion-panel
             v-for="(req, reqI) in requirementsBlock.list"
             :key="reqI"
+            :style="{ backgroundColor: expansionPanelColor }"
           >
             <v-expansion-panel-header>
               <strong>{{ req.title }}</strong>
@@ -47,6 +48,9 @@ export default {
   computed: {
     cardTitleColor() {
       return this.$vuetify.theme.dark ? 'blue darken-2' : 'grey lighten-3';
+    },
+    expansionPanelColor() {
+      return this.$vuetify.theme.dark ? '#1E1E1E' : 'white';
     },
   },
 };
