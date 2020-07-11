@@ -7,190 +7,390 @@
     <div
       v-for="(requirementsBlock, reqIndex) in requirementsList"
       :key="reqIndex"
-      class="pa-3 card-center-height"
+      class="pa-3"
     >
       <v-card
-        max-width="400"
         width="100%"
+        :color="cardTitleColor"
       >
-        <v-card-title class="headline">
+        <v-card-title
+          class="headline"
+          :class="{ 'white--text': $vuetify.theme.dark }"
+        >
           {{ requirementsBlock.title }}
         </v-card-title>
-        <div style="padding: 0 16px">
-          <v-list dense>
-            <ul>
-              <li
-                v-for="(req, reqI) in requirementsBlock.list"
-                :key="reqI"
-                style="min-height: 36px"
-              >
-                {{ req }}
-              </li>
-            </ul>
-          </v-list>
-        </div>
-        <v-divider />
-        <v-card-actions>
-          <div style="flex-grow: 1;"></div>
-          <v-btn
-            color="blue"
-            nuxt
-            text
-            block
-            @click="agreeWithRequirementsDialog = true"
+        <v-expansion-panels accordion>
+          <v-expansion-panel
+            v-for="(req, reqI) in requirementsBlock.list"
+            :key="reqI"
           >
-            <v-icon left>mdi-open-in-new</v-icon>
-            Learn more
-          </v-btn>
-          <div style="flex-grow: 1;"></div>
-        </v-card-actions>
+            <v-expansion-panel-header>{{ req.title }}</v-expansion-panel-header>
+            <v-expansion-panel-content>{{ descriptionRenderer(req.description) }}</v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-expansion-panels>
       </v-card>
     </div>
   </v-layout>
 </template>
 
 <script>
+import MarkdownIt from 'markdown-it';
+
 export default {
   data() {
     return {
+      md: new MarkdownIt(),
       agreeWithRequirementsDialog: false,
       requirementsList: [
         {
           title: 'WEB development',
           list: [
-            'NodeJS',
-            'TypeScript',
-            'Express',
-            'Passport',
-            'Vue',
-            'Angular',
-            'NuxtJS',
-            'SocketIO',
-            'NestJS',
-            'Apollo',
-            'RxJS',
-            'Mongoose',
-            'Lodash',
-            'React',
-            'CSS preprocessors',
+            {
+              title: 'NodeJS',
+              description: '',
+            },
+            {
+              title: 'TypeScript',
+              description: '',
+            },
+            {
+              title: 'Express',
+              description: '',
+            },
+            {
+              title: 'Passport',
+              description: '',
+            },
+            {
+              title: 'Vue',
+              description: '',
+            },
+            {
+              title: 'Angular',
+              description: '',
+            },
+            {
+              title: 'NuxtJS',
+              description: '',
+            },
+            {
+              title: 'SocketIO',
+              description: '',
+            },
+            {
+              title: 'NestJS',
+              description: '',
+            },
+            {
+              title: 'Apollo',
+              description: '',
+            },
+            {
+              title: 'RxJS',
+              description: '',
+            },
+            {
+              title: 'Mongoose',
+              description: '',
+            },
+            {
+              title: 'Lodash',
+              description: '',
+            },
+            {
+              title: 'React',
+              description: '',
+            },
+            {
+              title: 'CSS preprocessors',
+              description: '',
+            },
           ],
         },
         {
           title: 'Browser and dev-tools',
           list: [
-            'Network',
-            'Console',
-            'Inspector (and debugger)',
-            'Service Workers',
-            'Local storage',
-            'Session storage',
-            'Cookies',
-            'IndexedDB',
-            'Load page performance (process)',
+            {
+              title: 'Network',
+              description: '',
+            },
+            {
+              title: 'Console',
+              description: '',
+            },
+            {
+              title: 'Inspector (and debugger)',
+              description: '',
+            },
+            {
+              title: 'Service Workers',
+              description: '',
+            },
+            {
+              title: 'Local storage',
+              description: '',
+            },
+            {
+              title: 'Session storage',
+              description: '',
+            },
+            {
+              title: 'Cookies',
+              description: '',
+            },
+            {
+              title: 'IndexedDB',
+              description: '',
+            },
+            {
+              title: 'Load page performance (process)',
+              description: '',
+            },
           ],
         },
         {
           title: 'Auth',
           list: [
-            'Authorization / Authentication',
-            'Validation',
-            'Token',
-            'OAuth2',
-            'Authorization header',
-            'JsonWebToken',
-            'Access and refresh tokens',
-            'Passport (JS etc.)',
-            'Bcrypt',
+            {
+              title: 'Authorization / Authentication',
+              description: '',
+            },
+            {
+              title: 'Validation',
+              description: '',
+            },
+            {
+              title: 'Token',
+              description: '',
+            },
+            {
+              title: 'OAuth2',
+              description: '',
+            },
+            {
+              title: 'Authorization header',
+              description: '',
+            },
+            {
+              title: 'JsonWebToken',
+              description: '',
+            },
+            {
+              title: 'Access and refresh tokens',
+              description: '',
+            },
+            {
+              title: 'Passport (JS etc.)',
+              description: '',
+            },
+            {
+              title: 'Bcrypt',
+              description: '',
+            },
           ],
         },
         {
           title: 'Server security',
           list: [
-            'Production mode (no dev configurations)',
-            'TLS',
-            'Cors',
-            'Helmet + Disabled X-Powered-By header',
-            'CSRF',
-            'Rate limit',
-            'Virtual isolated environments / Containers',
+            {
+              title: 'Production mode (no dev configurations)',
+              description: '',
+            },
+            {
+              title: 'TLS',
+              description: '',
+            },
+            {
+              title: 'Cors',
+              description: '',
+            },
+            {
+              title: 'Helmet + Disabled X-Powered-By header',
+              description: '',
+            },
+            {
+              title: 'CSRF',
+              description: '',
+            },
+            {
+              title: 'Rate limit',
+              description: '',
+            },
+            {
+              title: 'Virtual isolated environments / Containers',
+              description: '',
+            },
           ],
         },
         {
           title: 'Technologies and databases',
           list: [
-            'MongoDB',
-            'MySQL',
-            'GraphQL',
-            'Shell/bash',
-            'File systems',
-            'Git',
-            'Docker',
-            'Kubernetes',
-            'Unit/e2e testing',
+            {
+              title: 'MongoDB',
+              description: '',
+            },
+            {
+              title: 'MySQL',
+              description: '',
+            },
+            {
+              title: 'GraphQL',
+              description: '',
+            },
+            {
+              title: 'Shell/bash',
+              description: '',
+            },
+            {
+              title: 'File systems',
+              description: '',
+            },
+            {
+              title: 'Git',
+              description: '',
+            },
+            {
+              title: 'Docker',
+              description: '',
+            },
+            {
+              title: 'Kubernetes',
+              description: '',
+            },
+            {
+              title: 'Unit/e2e testing',
+              description: '',
+            },
           ],
         },
         {
           title: 'Protocols requirements',
           list: [
-            'tcp/ip',
-            'http(s)',
-            'http/2',
-            'ws(s)',
-            'smtp',
-            'WebRTC',
-            'hls',
-            'ftp',
+            {
+              title: 'tcp/ip',
+              description: '',
+            },
+            {
+              title: 'http(s)',
+              description: '',
+            },
+            {
+              title: 'http/2',
+              description: '',
+            },
+            {
+              title: 'ws(s)',
+              description: '',
+            },
+            {
+              title: 'smtp',
+              description: '',
+            },
+            {
+              title: 'WebRTC',
+              description: '',
+            },
+            {
+              title: 'hls',
+              description: '',
+            },
+            {
+              title: 'ftp',
+              description: '',
+            },
           ],
         },
         {
           title: 'Principles and rules',
           list: [
-            'SOLID',
-            'Material Design',
-            'Asynchronous programming',
-            'Object-oriented programming',
-            'Functional programming',
-            'Lint',
+            {
+              title: 'SOLID',
+              description: '',
+            },
+            {
+              title: 'Material Design',
+              description: '',
+            },
+            {
+              title: 'Asynchronous programming',
+              description: '',
+            },
+            {
+              title: 'Object-oriented programming',
+              description: '',
+            },
+            {
+              title: 'Functional programming',
+              description: '',
+            },
+            {
+              title: 'Lint',
+              description: '',
+            },
           ],
         },
         {
           title: 'Mobile development',
           list: [
-            'Kotlin',
-            'NativeScript',
-            'Dart',
-            'Flutter',
+            {
+              title: 'Kotlin',
+              description: '',
+            },
+            {
+              title: 'NativeScript',
+              description: '',
+            },
+            {
+              title: 'Dart',
+              description: '',
+            },
+            {
+              title: 'Flutter',
+              description: '',
+            },
           ],
         },
         {
           title: 'Desktop and plugins',
           list: [
-            'Electron',
-            'C# .NET',
-            'Python',
-            'C/C++',
+            {
+              title: 'Electron',
+              description: '',
+            },
+            {
+              title: 'C# .NET',
+              description: '',
+            },
+            {
+              title: 'Python',
+              description: '',
+            },
+            {
+              title: 'C/C++',
+              description: '',
+            },
           ],
         },
       ],
     };
   },
-}
+  computed: {
+    cardTitleColor() {
+      return this.$vuetify.theme.dark ? 'blue darken-2' : 'grey lighten-3';
+    },
+  },
+  methods: {
+    descriptionRenderer(description) {
+      return this.md.render(description, { renderInline: true });
+    },
+  },
+};
 </script>
 
 <style scoped>
-  .card-center-height {
-    height: calc(100% - 118px);
-  }
-  .full-width-block {
-    display: flex;
-    width: 100%;
-    max-width: 440px;
-  }
-
   .grid-width-block {
     display: grid;
-    max-width: 100%;
-    width: 100%;
+    grid-auto-flow: row dense;
     grid-template-columns: repeat(auto-fill, minmax(320px, 440px));
     grid-template-rows: repeat(auto-fill, minmax(min-content, min-content));
   }
