@@ -1,4 +1,4 @@
-# requirements
+# Developer requirements
 
 > My exquisite Nuxt.js project
 
